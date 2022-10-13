@@ -1,6 +1,6 @@
 package com.coderscampus.objects;
 
-public class Objects {
+public class RunnableClass {
 	String gender;
 	String height;
 	String weight;
