@@ -7,7 +7,7 @@ public class RunnableClass {
 		// Object > a Noun, it's an instantiation of a Class
 		
 		// Data type : variable name : assignment operation
-		int someNumber = 39;
+//		int someNumber = 39;
 		
 		// new + Object = constructor
 		Human kennyCheng = new Human ();
