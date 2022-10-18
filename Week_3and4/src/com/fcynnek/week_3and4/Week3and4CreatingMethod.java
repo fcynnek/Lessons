@@ -27,18 +27,32 @@ public static int userInput() {
 public static void validatingUserInput(int i) {
 	
 	int convertedInput = i;
+
 	
-	if (convertedInput < 50) {
-		System.out.println("The number you typed in was: " + null);
+//	if (convertedInput < 50) {
+//		System.out.println("The number you typed in was: " + null);
+//	}
+//	
+//	else if (convertedInput > 300) {
+//		System.out.println("The number you typed in was: " + null);
+//	}
+//	
+//	else {
+//		System.out.println("The number you typed in was: " + convertedInput);
+//	}
+	while (convertedInput !=i) {
+		
+		if (convertedInput != i) {
+			System.out.println("Oops, that number wasn't between 50 and 300, try again: ");
+		}
+		
+		else {
+			System.out.println("The number you typed in was: " + i);
+		}
 	}
-	
-	else if (convertedInput > 300) {
-		System.out.println("The number you typed in was: " + null);
-	}
-	
-	else {
-		System.out.println("The number you typed in was: " + convertedInput);
+		
+		
 	}
 }
 
-}
+
