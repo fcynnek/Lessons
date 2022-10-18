@@ -1,5 +1,7 @@
 package com.coderscampus.objects;
 
+import java.util.Random;
+
 public class RunnableClass {
 	
 	public static void main(String[] args) {
@@ -8,6 +10,13 @@ public class RunnableClass {
 		
 		// Data type : variable name : assignment operation
 //		int someNumber = 39;
+		Random randomNumber = new Random ();
+		
+		for (int i = 0; i<20; i = i +1) {
+			System.out.println("Random number is " + randomNumber.nextInt(10));
+		
+		}
+		
 		
 		// new + Object = constructor
 		Human kennyCheng = new Human ();
