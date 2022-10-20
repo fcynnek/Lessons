@@ -9,14 +9,17 @@ public static void main (String[] args) {
 	System.out.println("Type a number between 50 and 300: ");
 	
 	Scanner scanner = new Scanner (System.in);
-//		userInput();
+	
 	int lastNumber = userInput(scanner);
+	
 		boolean callingUserInput = validatingUserInput(lastNumber);
 		
-		
 		while (callingUserInput == false) {
+			
 			System.out.println("Oops, that number wasn't between 50 and 300, try again: ");
+			
 			lastNumber = userInput(scanner);
+			
 			callingUserInput = validatingUserInput(lastNumber);	
 		}
 		System.out.println("The number you typed in was: " + lastNumber);
@@ -24,15 +27,11 @@ public static void main (String[] args) {
 		scanner.close();
 	}
 
-
 public static int userInput(Scanner scanner) {
 	
-
-
-	
 	String input = scanner.nextLine();
-	Integer convertedInput = Integer.parseInt(input);
 	
+	Integer convertedInput = Integer.parseInt(input);
 	
 	return convertedInput;
 	
