@@ -10,6 +10,7 @@ public class RunnableClass {
 		
 		// Data type : variable name : assignment operation
 //		int someNumber = 39;
+		System.out.println("Testing Random numbers:");
 		Random randomNumber = new Random ();
 		
 		for (int i = 0; i<20; i = i +1) {
@@ -19,7 +20,8 @@ public class RunnableClass {
 		
 		
 		// new + Object = constructor
-		Human kennyCheng = new Human ();
+		System.out.println("with new Human constructor:");
+		Human kennyCheng = new Human ("Male", "5'9\"", "158 lbs", "brown");
 		
 		// before creating the setProperties method
 //		kennyCheng.eyeColor = "brown";
@@ -28,6 +30,7 @@ public class RunnableClass {
 //		kennyCheng.gender = "Male";
 		
 		// after creating the setProperties method
+		System.out.println("with serProperties method:");
 		kennyCheng.setProperties("Male", "5'9\"", "158 lbs", "brown");
 		
 		System.out.println(kennyCheng.getInfo());
