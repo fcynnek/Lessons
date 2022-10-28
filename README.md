@@ -1,2 +1,2 @@
 # Lessons
- This are the codes and exercises from the lessons
+This repository is to store the codes and exercises from the lessons
