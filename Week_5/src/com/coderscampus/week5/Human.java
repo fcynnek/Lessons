@@ -8,7 +8,8 @@ public class Human {
 	static int SENIOR_AGE = 65;
 	
 	// instance variable
-	int age;
+	// most instance variables are made private by convention
+	private int age;
 	
 	// All instantiations can access static variables but not the other way around
 	public String getStageOfLife () {
