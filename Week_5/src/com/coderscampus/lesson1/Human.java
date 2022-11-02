@@ -1,4 +1,4 @@
-package com.coderscampus.week5;
+package com.coderscampus.lesson1;
 
 public class Human {
 	
@@ -9,7 +9,20 @@ public class Human {
 	
 	// instance variable
 	// most instance variables are made private by convention
-	private int age;
+	private int age; // can only be accessed within the Human class
+	
+	// access modifier , variable type
+	public int getAge () {
+		return age; // can be accessed from anywhere returning the value on "private" age
+	}
+	
+	public void setAge (int age) {
+		if (age < 0 || age > 150) {
+			System.out.println("No no no, that's not a valid age. A valid age is between 0 and 150");
+			return;
+		}
+		this.age = age; // can be accessed from anywhere and can modify the value of "private" age
+	}
 	
 	// All instantiations can access static variables but not the other way around
 	public String getStageOfLife () {

@@ -1,4 +1,4 @@
-package com.coderscampus.week5;
+package com.coderscampus.lesson1;
 
 public class StaticExample {
 
