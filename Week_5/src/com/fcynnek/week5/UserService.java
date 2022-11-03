@@ -2,8 +2,8 @@ package com.fcynnek.week5;
 
 public class UserService {
 
-	private void createUser () {
-		CreateUser[] createUser = new CreateUser[];
+	static void createUser (String username, String password, String name) {
+	// Method taking array of Strings as input	
 		
 		
 	}
