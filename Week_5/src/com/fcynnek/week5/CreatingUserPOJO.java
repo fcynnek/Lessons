@@ -2,12 +2,13 @@ package com.fcynnek.week5;
 
 public class CreatingUserPOJO {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
-		private String username;
-		private String password;
-		private String firstName;
-		private String lastName;
+		String username;
+		String password;
+		String firstName;
+		String lastName;
 
 	}
 	public void setUsername (String username) {
