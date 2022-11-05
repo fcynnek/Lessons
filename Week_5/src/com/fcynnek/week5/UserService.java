@@ -6,8 +6,11 @@ public class UserService {
 	// Method taking array of Strings as input	
 	}
 	
-	public String[] parseText (String input) {
-	// code here
+	public String[] parseText (String[] args) {
+		String[] stringArray = arg.split(",");
+		for (String aStringArray : stringArray) {
+			System.out.println(aStringArray);
+		}
 	}
 		
 	
