@@ -1,4 +1,4 @@
-package com.coderscampus.lesson1;
+package com.coderscampus.lesson01;
 
 public class Human {
 	

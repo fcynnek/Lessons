@@ -1,4 +1,4 @@
-package com.coderscampus.lesson8;
+package com.coderscampus.lesson08;
 
 public class StringManipulation {
 

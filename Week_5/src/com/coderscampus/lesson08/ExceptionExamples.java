@@ -1,4 +1,4 @@
-package com.coderscampus.lesson8;
+package com.coderscampus.lesson08;
 
 public class ExceptionExamples {
 
@@ -9,6 +9,7 @@ public class ExceptionExamples {
 		
 		// to avoid exceptions:
 		try {
+			@SuppressWarnings({ "unused", "null" })
 			String[] stringArray = someString.split(",");
 			// hit a type of exception. A null pointer exception
 			// access a property of an object as null

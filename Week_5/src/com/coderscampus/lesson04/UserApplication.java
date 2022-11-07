@@ -1,6 +1,6 @@
-package com.coderscampus.lesson4;
+package com.coderscampus.lesson04;
 
-import com.coderscampus.lesson3.User;
+import com.coderscampus.lesson03.User;
 
 public class UserApplication {
 

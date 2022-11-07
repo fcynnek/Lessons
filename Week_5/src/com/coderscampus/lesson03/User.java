@@ -1,4 +1,4 @@
-package com.coderscampus.lesson3;
+package com.coderscampus.lesson03;
 
 // POJO = Plain Old Java Object
 public class User {

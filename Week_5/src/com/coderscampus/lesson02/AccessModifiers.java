@@ -1,6 +1,6 @@
-package com.coderscampus.lesson2;
+package com.coderscampus.lesson02;
 
-import com.coderscampus.lesson1.Human;
+import com.coderscampus.lesson01.Human;
 
 public class AccessModifiers {
 
