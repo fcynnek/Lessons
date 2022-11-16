@@ -15,7 +15,7 @@ public class ExceptionExamples {
 			// access a property of an object as null
 		} 
 		catch (NullPointerException e) {
-			System.out.println("Oops, there was a null pointer exceptopm");
+			System.out.println("Oops, there was a null pointer exception");
 		}
 		// use try when anticipating an exception that needs handling
 		// exceptions are thrown by java and caught  
