@@ -1,4 +1,7 @@
-package com.coderscampus.lesson1;
+package com.coderscampus.lesson1.phys;
+// moved this class to its own package which means that now it needs to import Teacher from lesson1 package in order to compile
+
+import com.coderscampus.lesson1.Teacher;
 
 public class PhysicsTeacher extends Teacher {
 // inheritance happens at the class level
@@ -15,6 +18,6 @@ public class PhysicsTeacher extends Teacher {
 	}
 	
 	public void teach (String teacherName) {
-		System.out.println("I'm a physics teacher called " + teacherName + " and I'm now teaching physics");
+		System.out.println("I'm a teacher called " + teacherName + " and I'm now teaching");
 	}
 }

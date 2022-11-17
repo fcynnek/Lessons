@@ -5,8 +5,16 @@ public class Teacher {
 // this is helpful because code reuse is the main reason
 	
 	private String classes;
-	
 	private String levelOfEducation;
+	protected int totalNumberOfMarkedPapers;
+	
+	protected void markPapers () {
+		System.out.println("I'm a teacher and I'm now marking papers");
+	}
+	
+	private void giveARaise () {
+		System.out.println("Teacher gets a raise!");
+	}
 	
 	public Teacher () {
 		System.out.println("Inside the Teacher constructor");
@@ -18,16 +26,16 @@ public class Teacher {
 		System.out.println("I'm a teacher and I'm now teaching");
 	}
 	
-	public void teach (String teeacherName) {
-		System.out.println("I'm a teacher and I'm now teaching");
-	}
+//	public void teach (String teacherName) {
+//		System.out.println("I'm a teacher called " + teacherName + " and I'm now teaching");
+//	}
 	
 	public void teach (int age) {
-		System.out.println("I'm a teacher and I'm now teaching");
+		System.out.println("I'm a " + age + " year old teacher and I'm now teaching");
 	}
 	
 	public void teach (String teacherName, int age) {
-		System.out.println("I'm a teacher and I'm now teaching");
+		System.out.println("I'm a " + age + " year old teacher called " + teacherName + " and I'm now teaching");
 	}
 
 

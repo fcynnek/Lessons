@@ -1,4 +1,7 @@
-package com.coderscampus.lesson1;
+package com.coderscampus.lesson1.compsci;
+// moved this class to its own package which means that now it needs to import Teacher from lesson1 package in order to compile
+
+import com.coderscampus.lesson1.Teacher;
 
 public class CompSciTeacher extends Teacher {
 
