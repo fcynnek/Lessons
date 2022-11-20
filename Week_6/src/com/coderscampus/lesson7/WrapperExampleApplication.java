@@ -47,6 +47,21 @@ public class WrapperExampleApplication {
 		} else {
 			System.out.println("False");
 		}
+		
+		long firstLong = 10L;
+		long secondLong = 10L;
+		
+		if (firstLong == secondLong) {
+			System.out.println("Primitive long comparison works!");
+		}
+		
+		Long firstLongWrapper = new Long(10);
+		Long secondLongWrapper = Long.valueOf(10);
+		
+		// this comparison does not work because these are objects and not primitive. Object comparison is done via .equals
+		if (firstLongWrapper == secondLongWrapper) {
+			System.out.println("Object wrapper Long comparison works!");
+		}
 	}
 
 }
