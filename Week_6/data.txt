@@ -1,0 +1,2 @@
+This is a test string that will be output into a file.
+Is this line of text on a new line?

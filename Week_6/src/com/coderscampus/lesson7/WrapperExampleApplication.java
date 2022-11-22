@@ -18,8 +18,12 @@ public class WrapperExampleApplication {
 		 **/
 		
 		int primitiveInt = 8;
-		Integer wrapperInt = 7; // auto-boxing
+		Integer wrapperInt = 7; // auto-boxing: when declaring a primitive as an object
 		Integer anotherIntWrapper = Integer.valueOf(8);
+		
+		// un-boxing: assigning an object into a primitive
+		primitiveInt = new Integer(9);
+		primitiveInt = Integer.valueOf(9);
 		
 		String someNumber = "123";
 		String SomeOtherNumber = "456";
