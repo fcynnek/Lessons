@@ -14,6 +14,10 @@ public class Person implements Comparable <Person>, Serializable {
 	private String name;
 	private Integer height;
 	
+	// whenever there is a change in the code, it is expected to change the serialVersionUID to the next version in order to denote that there has been changes in the code since the deployment
+	// for example: 
+	private String gender;
+	// serialVersionUID should now be = 2L
 	
 	public Person (String name, Integer height)	{
 		this.name = name;
