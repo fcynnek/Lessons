@@ -1,11 +1,15 @@
 package com.coderscampus.lesson5;
 
-public class Person implements Comparable <Person> {
+import java.io.Serializable;
+
+public class Person implements Comparable <Person>, Serializable {
 	// need to identify the type by using the < > comparing one person object to another person object
 
 	// return 	1 = the object being compared to is greater than the object being passed
 	// return 	0 = the objects being compared are equal
 	// return  -1 = the object being compares to is less than the object being passed
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String name;
 	private Integer height;

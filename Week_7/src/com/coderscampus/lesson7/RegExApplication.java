@@ -21,13 +21,13 @@ public class RegExApplication {
 		// vogella.com -> common matching symbols
 		// regextester.com -> to test the regular expressions
 		
-		
-		inputMatchesRegExPattern("fake.email@gmail.com");
-		inputMatchesRegExPattern("trevorcraftycodr.com");
-		inputMatchesRegExPattern("trevor@craftycodr.thisisntarealdomain");
-		inputMatchesRegExPattern("trevor@craftycodr.com");
-		inputMatchesRegExPattern("trevor-page.2@gmail.com");
-		inputMatchesRegExPattern("Trevor@CraftyCodr.com");
+																			// Expected results:
+		inputMatchesRegExPattern("fake.email@gmail.com");					// valid
+		inputMatchesRegExPattern("trevorcraftycodr.com");					// invalid
+		inputMatchesRegExPattern("trevor@craftycodr.thisisntarealdomain");	// invalid
+		inputMatchesRegExPattern("trevor@craftycodr.com");					// valid
+		inputMatchesRegExPattern("trevor-page.2@gmail.com");				// valid
+		inputMatchesRegExPattern("Trevor@CraftyCodr.com");					// valid
 
 	}
 
