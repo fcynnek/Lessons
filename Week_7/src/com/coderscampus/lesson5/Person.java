@@ -3,6 +3,10 @@ package com.coderscampus.lesson5;
 public class Person implements Comparable <Person> {
 	// need to identify the type by using the < > comparing one person object to another person object
 
+	// return 	1 = the object being compared to is greater than the object being passed
+	// return 	0 = the objects being compared are equal
+	// return  -1 = the object being compares to is less than the object being passed
+	
 	private String name;
 	private Integer height;
 	
@@ -39,8 +43,8 @@ public class Person implements Comparable <Person> {
 //		} // else if (this.height.equals(that.height)) {
 //		  //	return 0;
 //		
-//		// in case we need to sort when the values are equal, we implement compareTo because String has a native compare method
-//		// integers also implements compareTo method so we can leverage the .compareTo with the height as well
+		// in case we need to sort when the values are equal, we implement compareTo because String has a native compare method
+		// integers also implements compareTo method so we can leverage the .compareTo with the height as well
 //		else if (this.height.equals(that.height)) {
 //			return this.name.compareTo(that.name);
 //		} else {
