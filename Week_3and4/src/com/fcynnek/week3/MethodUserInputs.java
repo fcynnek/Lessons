@@ -1,4 +1,4 @@
-package com.fcynnek.week_3and4;
+package com.fcynnek.week3;
 
 import java.util.Scanner;
 
