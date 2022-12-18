@@ -1,5 +1,8 @@
 package com.coderscampus.week9;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListApplication {
 
 	public static void main(String[] args) {
@@ -18,8 +21,24 @@ public class ListApplication {
 		names[1] = "Jane Doe";
 		names[2] = "John Doe";
 		names[3] = "Elon Musk";
+		// if we want to add a new array to [names], we can't because we had reached the limit this array can contain
+		// removing is also a limitation. We can say:
 		
+		names[1] = null;
 		
+		for (String name : names) {
+			System.out.println(name);
+		// this does not completely solve the removing because there is a null in position [1] and ideally, 
+		// we would want the [2] and [3] content to shift up and leave the null in the last position
+		}
+		
+		// there are solutions for these type of problems:
+		// Collections -> Java solution to common data structure problems
+		// List (a type of collection)
+		// Set (a type of collection)
+		// Map (a type of collection)
+		
+		// need to import List from Java.Util
+		List<String> elements = new ArrayList<String>();
 	}
-
 }
