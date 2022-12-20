@@ -17,6 +17,7 @@ public class ListApplication {
 		// this will give an out of bound error because Java is a 0 base index
 		// so the first index for [4] is i=0 and the highest is i=3
 		
+		System.out.println("Array example:");
 		names[0] = "Trevor Page";
 		names[1] = "Jane Doe";
 		names[2] = "John Doe";
@@ -40,5 +41,23 @@ public class ListApplication {
 		
 		// need to import List from Java.Util
 		List<String> elements = new ArrayList<String>();
+		
+		elements.add("Trevor Page");
+		elements.add("John Doe");
+		elements.add("Jane Doe");
+		elements.add("Elon Musk");
+		
+		System.out.println("");
+		System.out.println("List example:");
+		for (String element : elements) {
+			System.out.println(element);
+		}
+		System.out.println("");
+		System.out.println("Remove example:");
+		elements.remove(0);
+		elements.remove("Jane Doe");
+		for (String element : elements) {
+			System.out.println(element);
+		}
 	}
 }
