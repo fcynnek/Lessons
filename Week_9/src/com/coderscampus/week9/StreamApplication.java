@@ -1,7 +1,11 @@
 package com.coderscampus.week9;
 
+import java.security.KeyStore.Entry;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -11,7 +15,77 @@ public class StreamApplication {
 	public static void main(String[] args) {
 		
 //		example1();
+//		example2();
+		example3();
 		
+//		List<Integer> numbers = new ArrayList<>(); // normal list of integers
+		List<List<Integer>> listOfNumbersList = new ArrayList<>();
+		
+		listOfNumbersList.add(Arrays.asList(1,2,3));
+		listOfNumbersList.add(Arrays.asList(2,3,4));
+		listOfNumbersList.add(Arrays.asList(3,4,5));
+		listOfNumbersList.add(Arrays.asList(4,5,6));
+		listOfNumbersList.add(Arrays.asList(5,6,7));
+		listOfNumbersList.add(Arrays.asList(6,7,8));
+		
+		long integerCount = listOfNumbersList.stream()
+						 					 .flatMap(x -> x.stream())
+//											 .collect(Collectors.joining(",")); 
+											 .count();
+		
+		System.out.println("Count with Stream:");
+		System.out.println(integerCount + "\n");
+		
+		long integerSum = listOfNumbersList.stream()
+											 .flatMap(x -> x.stream())
+											 .mapToInt(x -> x.intValue()) 
+											 .sum();
+		
+		System.out.println("Sum with Stream:");
+		System.out.println(integerSum + "\n");
+		
+		IntSummaryStatistics statSum = listOfNumbersList.stream()
+														.flatMap(x -> x.stream())
+														.mapToInt(x -> x.intValue()) 
+														// the above line can also appear as:
+//														.mapToInt(Integer::intValue)
+														.summaryStatistics();
+
+		System.out.println("Summary Statistics with Stream:");
+		System.out.println(statSum);
+	}
+
+	private static void example3() {
+		
+		List<Car> cars = new ArrayList<>();
+
+		cars.add(new Car("Tesla", "Model S", 2019));
+		cars.add(new Car("Tesla", "Model S", 2018));
+		cars.add(new Car("Tesla", "Model X", 2016));
+		cars.add(new Car("Tesla", "Model 3", 2019));
+		cars.add(new Car("Ford", "F150", 2017));
+		cars.add(new Car("Toyota", "Corola", 1997));
+		cars.add(new Car("Toyota", "Celica", 2002));
+		
+		// Grouping with Streams
+		
+		// Example of how it would group:
+		// Tesla -> ["Model S 2019", "Model S 2018", "Model X 2016", "Model 3 2019"]
+		// Ford -> ["F150 2017"]
+		// Toyota -> ["Corolla 1997", "Celica 2002"]
+
+		Map<String, List<Car>> groupedByBrand = cars.stream()
+													.collect(Collectors.groupingBy(car -> car.getBrand()));
+
+		System.out.println(groupedByBrand);
+		
+		Set<java.util.Map.Entry<String, List<Car>>> entrySet = groupedByBrand.entrySet();
+		
+		System.out.println(entrySet);
+		
+	}
+
+	public static void example2() {
 		List<Car> cars = new ArrayList<>();
 		
 		cars.add(new Car("Tesla", "Model S", 2019));
@@ -47,6 +121,7 @@ public class StreamApplication {
 								 .collect(Collectors.joining(", "));
 		
 		System.out.println(brands); // no need to stream because there is no intermediate action
+		
 	}
 
 	public static void example1() {
