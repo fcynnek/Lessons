@@ -26,6 +26,9 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+	public Status getStatus() {
+		return status;
+	}
 	
 	
 	public void setUsername(String username) {
@@ -34,13 +37,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
-	public Status getStatus() {
-		return status;
-	}
-
-
 	public void setStatus(Status status) {
 		this.status = status;
 	}
