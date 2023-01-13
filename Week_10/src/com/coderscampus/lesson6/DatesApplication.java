@@ -34,7 +34,7 @@ public class DatesApplication {
 			System.out.println(now + " is after " + cal.getTime());
 		}
 		
-		Calendar.getInstance(TimeZone.getTimeZone("America/Los Angeles"));
+//		Calendar.getInstance(TimeZone.getTimeZone("America/Los Angeles"));
 	}
 
 	private static void lesson6() {
