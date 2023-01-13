@@ -1,0 +1,48 @@
+package com.coderscampus.lesson6;
+
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
+public class DatesApplication {
+
+	public static void main(String[] args) {
+
+//		lesson6();
+		
+		Date jan012020 = new Date(2020,1,1,0,0,0); // YYYY, MM, DD, HH, MM, SS
+		System.out.println(jan012020);
+		
+		Calendar cal = Calendar.getInstance(); // calendars cannot be instantiated
+		
+		Date now = cal.getTime();
+		System.out.println(now);
+		
+		Date someOtherDate = cal.getTime(); // when changing the date, we "instantiate"
+		cal.set(2020, 1, 1, 15, 1, 5);		// then we change it to the desired date  ** ALSO: MM is zero base
+		someOtherDate = cal.getTime();		// then we call on the variable AFTER WE CHANGED THE DATE
+		System.out.println(someOtherDate);
+		
+		cal.add(Calendar.HOUR, 2); // default value of adding hour = 10
+		System.out.println(cal.getTime());
+		
+		cal.add(Calendar.MINUTE, -1); // there is no add function so we "add" a negative number to subtract 
+		System.out.println(cal.getTime());
+		
+		if (now.after(someOtherDate)) {
+			System.out.println(now + " is after " + cal.getTime());
+		}
+		
+		Calendar.getInstance(TimeZone.getTimeZone("America/Los Angeles"));
+	}
+
+	private static void lesson6() {
+		Date now = new Date();
+		System.out.println(now);
+		
+		java.sql.Date alsoNow = new java.sql.Date(0);
+		System.out.println(alsoNow);
+	}
+
+}
