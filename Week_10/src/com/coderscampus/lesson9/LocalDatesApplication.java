@@ -5,7 +5,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.TemporalUnit;
 import java.util.Formatter;
 
@@ -14,7 +17,25 @@ public class LocalDatesApplication {
 	public static void main(String[] args) {
 
 //		lesson9();
+//		lesson10();
+
+		// parsing string into date and time
+		try {
+			LocalDateTime jan1 = LocalDateTime.parse("2020-01-01 3:00 PM", DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm a"));
+			System.out.println(jan1);
+			
+			LocalDate endOfFeb = LocalDate.of(2020, 2, 5).with(TemporalAdjusters.lastDayOfMonth());
+			System.out.println(endOfFeb);
+		} catch (DateTimeParseException e) {
+			System.out.println("Oops it doesn't looks like your Date/Time is formatted correctly");
+		}
 		
+		
+		
+		
+	}
+
+	private static void lesson10() {
 		LocalDateTime jan1 = LocalDateTime.of(2020, 1, 1, 13, 30, 0);
 		System.out.println(jan1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd h:mm:ss a")));
 		
@@ -27,7 +48,6 @@ public class LocalDatesApplication {
 		
 		jan3 = jan3.minus(1, ChronoUnit.DAYS);
 		System.out.println(jan3);
-
 	}
 
 	private static void lesson9() {
