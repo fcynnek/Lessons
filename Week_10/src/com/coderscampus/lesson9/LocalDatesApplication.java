@@ -31,8 +31,6 @@ public class LocalDatesApplication {
 		}
 		
 		
-		
-		
 	}
 
 	private static void lesson10() {
