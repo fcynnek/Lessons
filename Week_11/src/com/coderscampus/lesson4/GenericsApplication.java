@@ -34,4 +34,13 @@ public class GenericsApplication {
 		String val = Transformer.join(1, 2.0);
 		System.out.println(val);
 	}
+	
+	@Test
+	public void wildcard_in_generics() {
+		List<Long> list = new ArrayList<>();
+		// we get compile error because Integer does NOT extends String
+		
+		list.add(1L); list.add(5L); list.add(100L);
+		Transformer.join(list);
+	}
 }
