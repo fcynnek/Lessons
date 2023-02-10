@@ -1,12 +1,13 @@
 package com.coderscampus.lesson1;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class MultiThreadingApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
 
 		// This is only helpful when the threads are going to be waiting for other services to complete
 //		for (int i=0; i<50; i++) {
@@ -26,8 +27,10 @@ public class MultiThreadingApp {
 //			service.execute(new SomeTask());
 			// execute is from the runnable class 
 			Future<TaskDto> futureTask = service.submit(new SomeTask());
-			System.out.println(futureTask);
 			// submit is from the callable class
+			System.out.println(futureTask.get());
+			// the problem with .get() is that it makes the code not asynchronous because it has to wait for the operation to finish
+			// before it can "get" the output of the calculation
 		}
 	}
 }
