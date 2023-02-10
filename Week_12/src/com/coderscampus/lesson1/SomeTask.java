@@ -11,6 +11,7 @@ public class SomeTask implements Callable<TaskDto> {
 	
 	private String name;
 	private static int taskID=0;
+	private TaskDto taskDto;
 
 	public String getName() {
 		return name;
@@ -30,9 +31,11 @@ public class SomeTask implements Callable<TaskDto> {
 //		System.out.println("I'm task ID: " + taskID + " I'm running on thread: " + Thread.currentThread().getName());	
 //	}
 	
-	@Override
-	public TaskDto call() throws Exception {
-		TaskDto taskDto = new TaskDto();
+	
+//	public TaskDto call() throws Exception {
+//	public TaskDto call() {
+	public SomeTask doSomeWork() {
+		taskDto = new TaskDto();
 		for (int i=0; i<10000000; i++) {
 			Integer int1 = new Random().nextInt();
 			Integer int2 = new Random().nextInt();
@@ -41,7 +44,12 @@ public class SomeTask implements Callable<TaskDto> {
 		}
 		taskID++;
 		System.out.println("I'm task ID: " + taskID + " I'm running on thread: " + Thread.currentThread().getName());
+		return this;
+	}
+	
+	public TaskDto markComplete () {
 		taskDto.setFinished(true);
 		return taskDto;
+		
 	}
 }
