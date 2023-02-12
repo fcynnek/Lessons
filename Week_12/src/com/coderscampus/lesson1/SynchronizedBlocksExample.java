@@ -11,7 +11,7 @@ public class SynchronizedBlocksExample {
 
 	private AtomicInteger j = new AtomicInteger(0);
 	// a solution is to change the thread for a "thread safe"
-	// for integers, the thread safe is an "atomic integer" but it needs to be instanciated and passed in the initial value 
+	// for integers, the thread safe is an "atomic integer" but it needs to be instantiated and passed in the initial value 
 	
 	@Test
 	public void asynchronous () {
