@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coderscampus.Unit13.domain.User;
 import com.coderscampus.Unit13.service.FileService;
 
 	/*
@@ -20,7 +22,13 @@ import com.coderscampus.Unit13.service.FileService;
 public class FileController {
 
 	@Autowired
+	private ApplicationContext applicationContext;
+	
+	@Autowired
 	private FileService fileService;
+	
+	@Autowired
+	private User user;
 	
 //	@GetMapping("") //empty "" means listening on the root of the application -> localhost:8080
 //	public List<String> readLines() throws IOException {
@@ -29,6 +37,10 @@ public class FileController {
 	
 	@GetMapping("/read-lines")
 	public List<String> readLines() throws IOException {
+//		applicationContext.getBean(FileService.class); // grab the instantiated class from the autowire (line 23)
+		// alternatively (not through Spring autowire):
+		FileService fileService = applicationContext.getBean(FileService.class);
+		System.out.println(user);
 		return fileService.readFile("text.txt");
 	}
 	
