@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,18 @@ public class FileController {
 	@Autowired
 	private User user;
 	
+	
+	// For @value ${xyz} the sign and curly brakets are to signify that the input passed in are keys and not values
+	@Value("${superuser.username}")
+	private String superuserUsername;
+	
+	@Value("${superuser.password}")
+	private String superuserPassowrd;
+	
+	@Value("${superuser.name}")
+	private String superuserName;
+	
+	
 //	@GetMapping("") //empty "" means listening on the root of the application -> localhost:8080
 //	public List<String> readLines() throws IOException {
 //		return fileService.readFile("text.txt");
@@ -41,6 +54,11 @@ public class FileController {
 		// alternatively (not through Spring autowire):
 		FileService fileService = applicationContext.getBean(FileService.class);
 		System.out.println(user);
+		
+		System.out.println(superuserUsername);
+		System.out.println(superuserPassowrd);
+		System.out.println(superuserName);
+		
 		return fileService.readFile("text.txt");
 	}
 	
