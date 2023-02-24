@@ -2,8 +2,11 @@ package com.coderscampus.Unit13;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+// if for some reason, the configuration package needs to be in the parent package from where the application is, do this:
+@ComponentScan("com.coderscampus")
 public class Unit13Application {
 
 	/* 
