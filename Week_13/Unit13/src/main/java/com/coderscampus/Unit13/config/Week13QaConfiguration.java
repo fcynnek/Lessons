@@ -2,11 +2,15 @@ package com.coderscampus.Unit13.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import com.coderscampus.Unit13.domain.User;
 
 @Configuration
-public class Week13Configuration {
+//public class Week13Configuration {
+// alternatively to having application.properties files (src/main/resources), we can leverage this and make multiple profiles
+@Profile("qa")
+public class Week13QaConfiguration {
 
 //	@Bean
 //	public Datasource datasource() {
@@ -19,6 +23,6 @@ public class Week13Configuration {
 	
 	@Bean
 	public User user() {
-		return new User("KennyC", "asfbhjkasbfkj", "Kenny Cheng");
+		return new User("JohnD", "asfbhjkasbfkj", "John Doe");
 	}
 }

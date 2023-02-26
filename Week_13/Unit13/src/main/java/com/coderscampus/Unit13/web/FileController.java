@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,7 @@ public class FileController {
 	private FileService fileService;
 	
 	@Autowired
+	@Qualifier("superUser") // this overrides the annotation and tells Spring to grab by method and not by annotation
 	private User user;
 	
 	
