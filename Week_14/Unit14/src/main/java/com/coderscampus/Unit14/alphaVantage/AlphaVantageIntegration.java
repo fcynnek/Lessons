@@ -31,8 +31,8 @@ public class AlphaVantageIntegration {
 		 * Please record this API key at a safe place for future data access.
 		 */
 		
-//		ResponseEntity<String> response = rt.getForEntity(uri, String.class); // this returns more information from the API such as headers, response status
 //		String response = rt.getForObject(uri, String.class); // this wraps the response as String Objects
+//		ResponseEntity<String> response = rt.getForEntity(uri, String.class); // this returns more information from the API such as headers, response status
 		// instead of receiving a string, we want to map out the entire return data into our getters and setters that we created
 		ResponseEntity<AlphaVantageResponse> response = rt.getForEntity(uri, AlphaVantageResponse.class);
 		System.out.println(response);
