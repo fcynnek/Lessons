@@ -1,8 +1,9 @@
-<html>
+<html xmlns:th="http://thymeleaf.org">
 	<head>
 		<title>Welcome</title>
 	</head>
 	<body>
 		<h1>Welcome</h1>
+		<div th:inline="text">Hi there [[]${firstname}</div>
 	</body>
 </html>
