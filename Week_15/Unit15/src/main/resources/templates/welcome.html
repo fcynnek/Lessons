@@ -4,6 +4,13 @@
 	</head>
 	<body>
 		<h1>Welcome</h1>
-		<div th:inline="text">Hi there [[]${firstname}</div>
+		<p>Inserting the code via "in-line"</p>
+		<div th:inline="text">Hi there [[${firstname}]]</div>
+		<p>Inserting the code via div tag</p>
+		<div th:text="|Hi there ${firstname}|">This text will not show on the browser</div>
+		
+		<form action="" method="post">
+			<button>Submit</button>
+		</form>
 	</body>
 </html>

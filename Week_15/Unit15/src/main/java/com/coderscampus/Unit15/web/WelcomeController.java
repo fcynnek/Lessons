@@ -3,6 +3,9 @@ package com.coderscampus.Unit15.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.coderscampus.Unit15.domain.Person;
 
 @Controller
 public class WelcomeController {
@@ -14,8 +17,17 @@ public class WelcomeController {
 		// IMPORTANT: New dependency: Thymeleaf
 		// ModelMap is basically a hashmap (keys and values)
 		
-		String firstname = "Kenny";
-		model.put("firstname", firstname);
+//		String firstname = "Kenny";
+//		model.put("firstname", firstname);
+		
+		Person person = new Person();
+		model.put("person", person);
+		return "welcome";
+	}
+	
+	@PostMapping("")
+	public String postRootWebpage(Person person) {
+		System.out.println(person);
 		return "welcome";
 	}
 }
