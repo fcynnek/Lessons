@@ -10,7 +10,17 @@
 		<div th:text="|Hi there ${firstname}|">This text will not show on the browser</div>
 		
 		<form action="" method="post">
-			<button>Submit</button>
+			<div>
+				<label>First Name:</label>
+				<input type="text" th:field="${person.firstname}">
+			</div>
+			<div>
+				<label>Last Name:</label>
+				<input type="text" th:field="${person.lastname}">
+			</div>
+			<div>
+				<button>Submit</button>
+			</div>
 		</form>
 	</body>
 </html>
