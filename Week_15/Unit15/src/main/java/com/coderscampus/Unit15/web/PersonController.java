@@ -1,5 +1,7 @@
 package com.coderscampus.Unit15.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -31,8 +33,12 @@ public class PersonController {
 //		model.put("firstname", firstname);
 		
 //		Person person = appContext.getBean(Person.class);
+		
+		List<Person> people = personService.findAll();
+		
 		Person person = new Person();
 		model.put("person", person);
+		model.put("people", people);
 		return "people";
 	}
 	
@@ -55,5 +61,12 @@ public class PersonController {
 		
 		// a solution is to return redirect. Redirect below returns to the root
 		return "redirect:/persons";
+	}
+	
+	@PostMapping("/persons/{personId}")
+	public String postPerson(Person person) {
+		Person savedPerson = personService.save(person);
+		System.out.println(savedPerson);
+		return "redirect:/persons/" + savedPerson.getId();
 	}
 }

@@ -1,7 +1,11 @@
 package com.coderscampus.Unit15.repository;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +23,15 @@ public class PersonRepository {
 	
 	public Person findById(Integer personId) {
 		return people.get(personId);
+	}
+
+	public List<Person> findAll() {
+		return people.entrySet()
+						.stream()
+//						.map(Entry::getValue) // two ways of doing this
+						.map(entry -> entry.getValue())
+						.collect(Collectors.toList());
+
 	}
 	
 }
