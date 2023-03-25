@@ -6,14 +6,18 @@
 	<h1>Welcome</h1>
 	<p>Inserting the code via "in-line"</p>
 	<div th:inline="text">Hi there [[${firstname}]]</div>
-	<br>
+	<br><hr>
 	<p>Inserting the code via div tag</p>
 	<div th:text="|Hi there ${firstname}|">This text will not show on
 		the browser</div>
-	<br>
+	<br><hr><hr>
 	<p>Below is using the controller and Thymeleaf:</p>
 
-<div>continue from video 8 at 8:30</div>
+	<div th:each="storedPerson : ${people}">
+		<span th:inline="text">
+			Person #[[${storedPerson.id}]]: <a th:href="@{/persons/{personId}(personId=${storedPerson.id})}">[[${storedPerson.firstname}]] [[${storedPerson.lastname}]]</a>
+		</span>
+	</div>
 	<form action="" method="post">
 		<input type="hidden" th:field="${person.id}">
 		<div>
@@ -25,8 +29,13 @@
 				th:field="${person.lastname}">
 		</div>
 		<div>
+			<a href="/persons" th:if="${person.id != null}">Back</a>
 			<button>Submit</button>
 		</div>
+	</form>
+	<form th:action="@{/persons/{personId}/delete(personId=${person.id})}" method="post" th:if="${person.id != null}">
+	<!-- @{ } allows th to create a dynamic URL -->
+			<button>Delete</button>
 	</form>
 </body>
 </html>

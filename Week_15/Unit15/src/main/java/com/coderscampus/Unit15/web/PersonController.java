@@ -69,4 +69,10 @@ public class PersonController {
 		System.out.println(savedPerson);
 		return "redirect:/persons/" + savedPerson.getId();
 	}
+	
+	@PostMapping("/persons/{personId}/delete")
+	public String deletePerson(@PathVariable Integer personId) {
+		personService.delete(personId);
+		return "redirect:/persons";
+	}
 }
