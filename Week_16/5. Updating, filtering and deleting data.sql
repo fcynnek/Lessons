@@ -3,6 +3,10 @@ select * from transactions;
 update transactions
 set user_id = 1;
 
+update users
+set last_name = 'Doe'
+where user_id = 3;
+
 -- selecting data using a primary key
 select * from transactions
 where transaction_id = 2;
