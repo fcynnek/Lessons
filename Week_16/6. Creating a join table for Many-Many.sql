@@ -1,6 +1,13 @@
 -- many to many relationship is enforced by a join table
 
-create table user_accountuser_accountuser_account (
+CREATE TABLE `online_bank`.`account` (
+  `account_id` INT NOT NULL,
+  `account_name` VARCHAR(45) NOT NULL,
+  `balance` DECIMAL(6,2) NOT NULL,
+  PRIMARY KEY (`account_id`));
+
+
+create table 'online_bank'.'user_account' (
 'user_id' int not null,
 'account_id' int not null,
 foreign key (user_id) references 'users' (user_id),
