@@ -4,8 +4,8 @@ update transactions
 set user_id = 1;
 
 update users
-set last_name = 'Doe'
-where user_id = 3;
+set first_name = 'John'
+where user_id = 2;
 
 -- selecting data using a primary key
 select * from transactions
