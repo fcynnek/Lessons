@@ -10,4 +10,11 @@ public class Unit18Application {
 		SpringApplication.run(Unit18Application.class, args);
 	}
 
+	/*
+	 *  New dependencies to include for Spring:
+	 *  -	Spring Data JPA -> brings in Java Hibernate which is needed to map out DTOs with getters and setters to DB
+	 *  -	MySQL Driver -> brings in connector for MySQL
+	 *  
+	 *  The username and password should match the same credentials on MySQL
+	 */
 }
