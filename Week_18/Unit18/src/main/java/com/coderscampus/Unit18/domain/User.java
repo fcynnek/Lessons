@@ -34,6 +34,13 @@ public class User {
 	private Address address;
 	// [continued from Address class] since this is a 1:1 relationship, we do not need a list (ie. 1 address:1 user)
 	
+	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", name=" + name
+				+ ", accounts=" + accounts + ", address=" + address + "]";
+	}
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	// this is to signal SQL that the ID will be used as PK and GeneratedValue is to have SQL AI
 	// also recommended to add this to the setter

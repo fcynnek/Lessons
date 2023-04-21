@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.coderscampus.Unit18.domain.User;
 import com.coderscampus.Unit18.service.UserService;
@@ -31,5 +32,19 @@ public class UserController {
 		User user = userService.findById(userId);
 		model.put("users", Arrays.asList(user));
 		return "users";
+	}
+	
+	@GetMapping("/register")
+	public String getNewUser(ModelMap model) {
+		model.put("user", new User());
+		return "register";
+	}
+	
+	@PostMapping("/register")
+	public String createUser (User user) {
+		System.out.println(user);
+		userService.createUser(user);
+		return "redirect:/register";
+		// always return a redirect when postmapping
 	}
 }
