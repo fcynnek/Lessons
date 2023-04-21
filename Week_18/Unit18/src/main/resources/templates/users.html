@@ -5,8 +5,25 @@
 </head>
 <body>
     <h1>Users</h1>
-
-    <div th:each="user : ${users}">
+    <div th:if="${#list.size(users) == 1}">
+    <!-- th:if is the same as an if statement in java -->
+        <form action="/register" method="post">
+            <div>
+                <label>Username:</label> <input type="text" th:field="${user.username}"/>
+            </div> 
+            <div>
+                <label>Password:</label> <input type="password" th:field="${user.password}"/>
+            </div> 
+            <div>
+                <label>Name:</label> <input type="text" th:field="${user.name}"/>
+            </div> 
+            <div>
+                <input type="submit" value="Update User Account"/>
+            </div> 
+        </form> 
+    </div>
+    <div th:unless="${#list.size(users) == 1}" th:each="user : ${users}">
+    <!-- th:unless is the thymeleaf version of if else -->
         <span th:text="${user.userId}"></span><br>
         <span th:text="${user.username}"></span><br>
         <span th:text="${user.name}"></span><br>

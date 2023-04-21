@@ -31,6 +31,7 @@ public class UserController {
 	public String findById (ModelMap model, @PathVariable Long userId) {
 		User user = userService.findById(userId);
 		model.put("users", Arrays.asList(user));
+//		model.put("user", user);
 		return "users";
 	}
 	
@@ -43,8 +44,16 @@ public class UserController {
 	@PostMapping("/register")
 	public String createUser (User user) {
 		System.out.println(user);
-		userService.createUser(user);
+		userService.saveUser(user);
 		return "redirect:/register";
 		// always return a redirect when postmapping
+	}
+	
+	@PostMapping("/users/{userId}")
+	public String postOneUser (ModelMap model, @PathVariable Long userId, User user) {
+		user = userService.saveUser(user);
+		model.put("users", Arrays.asList(user));
+		model.put("user", user);
+		return "redirect:/users/" + user.getUserId();
 	}
 }

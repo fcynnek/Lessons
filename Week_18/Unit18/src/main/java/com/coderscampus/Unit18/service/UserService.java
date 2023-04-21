@@ -26,7 +26,7 @@ public class UserService {
 		return userOpt.orElse(new User());
 	}
 
-	public User createUser(User user) {
+	public User saveUser(User user) {
 		return userRepo.save(user);	
 	}
 
