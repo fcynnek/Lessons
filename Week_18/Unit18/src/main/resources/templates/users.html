@@ -5,9 +5,9 @@
 </head>
 <body>
     <h1>Users</h1>
-    <div th:if="${#list.size(users) == 1}">
+    <div th:if="${#lists.size(users) == 1}">
     <!-- th:if is the same as an if statement in java -->
-        <form action="/register" method="post">
+        <form action="" method="post">
             <div>
                 <label>Username:</label> <input type="text" th:field="${user.username}"/>
             </div> 
@@ -22,7 +22,7 @@
             </div> 
         </form> 
     </div>
-    <div th:unless="${#list.size(users) == 1}" th:each="user : ${users}">
+    <div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
     <!-- th:unless is the thymeleaf version of if else -->
         <span th:text="${user.userId}"></span><br>
         <span th:text="${user.username}"></span><br>
