@@ -38,7 +38,14 @@ public class UserService {
 			checking.setAccountName("Checking Account");
 			checking.getUsers().add(user); // this makes the relationship pointing from Accounts -> Users
 			user.getAccounts().add(checking); // this makes the relationship pointing from Users -> Accounts
+			
+			Account savings = new Account();
+			savings .setAccountName("Savings Account");
+			savings.getUsers().add(user);
+			user.getAccounts().add(savings);
+			
 			accountRepo.save(checking);
+			accountRepo.save(savings);
 		}
 		return userRepo.save(user);	
 	}
