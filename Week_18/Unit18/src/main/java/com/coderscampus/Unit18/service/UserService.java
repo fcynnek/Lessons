@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import com.coderscampus.Unit18.domain.Account;
 import com.coderscampus.Unit18.domain.User;
+import com.coderscampus.Unit18.repository.AccountRepository;
 import com.coderscampus.Unit18.repository.UserRepository;
 
 @Service
@@ -14,6 +17,9 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private AccountRepository accountRepo;
 	
 	public List<User> findAll () {
 		return userRepo.findAll();
@@ -27,6 +33,13 @@ public class UserService {
 	}
 
 	public User saveUser(User user) {
+		if (user.getUserId() == null) {
+			Account checking = new Account();
+			checking.setAccountName("Checking Account");
+			checking.getUsers().add(user); // this makes the relationship pointing from Accounts -> Users
+			user.getAccounts().add(checking); // this makes the relationship pointing from Users -> Accounts
+			accountRepo.save(checking);
+		}
 		return userRepo.save(user);	
 	}
 

@@ -1,9 +1,11 @@
 package com.coderscampus.Unit18.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +35,7 @@ public class User {
 	private List<Account> accounts = new ArrayList<>();
 	private Address address;
 	// [continued from Address class] since this is a 1:1 relationship, we do not need a list (ie. 1 address:1 user)
+	private LocalDate createdDate;
 	
 	
 	@Override
@@ -71,6 +74,9 @@ public class User {
 		this.name = name;
 	}
 	
+	// 1:1 relationships are by default eager fetch
+	// many:many relationships are by default eager fetch
+	
 	@ManyToMany
 	@JoinTable (name = "user_account", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "account_id"))
 	public List<Account> getAccounts() {
@@ -80,12 +86,20 @@ public class User {
 		this.accounts = accounts;
 	}
 	
-	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
 	public Address getAddress() {
 		return address;
 	}
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
 	}
 	
 	
