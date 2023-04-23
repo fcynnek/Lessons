@@ -50,9 +50,16 @@ public class UserController {
 	}
 	
 	@PostMapping("/users/{userId}")
-	public String postOneUser (@PathVariable Long userId, User user) {
+	public String postOneUser (User user) {
+		// @PathVariable Long userId not needed on the arguments
 		userService.saveUser(user);
 
 		return "redirect:/users/" + user.getUserId();
+	}
+	
+	@PostMapping("/users/{userId}/delete")
+	public String deleteOneUser (@PathVariable Long userId) {
+		userService.delete(userId);
+		return "redirect:/users";
 	}
 }

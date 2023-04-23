@@ -21,6 +21,10 @@
                 <input type="submit" value="Update User Account"/>
             </div> 
         </form> 
+        <!-- making a new form to be able to add a "delete" action. Otherwise, it would requise JS -->
+        <form th:action="@{/users/{userId}/delete(userId=${user.userId})}" method="post">
+            <input type="submit" value="Delete User Account"/>
+        </form>
     </div>
     <div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
     <!-- th:unless is the thymeleaf version of if else -->
