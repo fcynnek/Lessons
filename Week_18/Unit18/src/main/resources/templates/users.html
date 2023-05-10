@@ -7,6 +7,7 @@
     <h1>Users</h1>
     <div th:if="${#lists.size(users) == 1}">
     <!-- th:if is the same as an if statement in java -->
+        <!-- updating an existing user account -->
         <form action="" method="post">
             <div>
                 <label>Username:</label> <input type="text" th:field="${user.username}"/>
