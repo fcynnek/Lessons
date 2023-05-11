@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -14,6 +15,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	private UserDetailsService userDetailsService;
 	
 	@Bean
 	public PasswordEncoder passwordEncoder () {
@@ -25,10 +27,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //		// TODO Auto-generated method stub
 //		super.configure(auth);
 		
-		auth.inMemoryAuthentication()
-			.withUser("kenny@email.com")
-			.password("password123")
-			.roles("USER", "ADMIN");
+		auth
+			.userDetailsService(userDetailsService)
+			.passwordEncoder(passwordEncoder);
+		
+//			.inMemoryAuthentication()
+//			.withUser("kenny@email.com")
+//			.password("password123")
+//			.roles("USER", "ADMIN");
 	}
 	
 	@Override
