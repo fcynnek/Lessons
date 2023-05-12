@@ -1,9 +1,14 @@
 package com.coderscampus.Unit20.domain;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -13,8 +18,16 @@ public class User {
 	private Long id;
 	private String username;
 	private String password;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<Authorities> authorities;
 	
 	
+	public Set<Authorities> getAuthorities() {
+		return authorities;
+	}
+	public void setAuthorities(Set<Authorities> authorities) {
+		this.authorities = authorities;
+	}
 	public Long getId() {
 		return id;
 	}
