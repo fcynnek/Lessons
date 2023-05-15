@@ -9,11 +9,20 @@ import com.coderscampus.Unit20.domain.User;
 
 public class CustomSecurityUser extends User implements UserDetails {
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomSecurityUser() {}
+	
+	public CustomSecurityUser(User user) {
+		this.setAuthorities(user.getAuthorities());
+		this.setId(user.getId());
+		this.setPassword(user.getPassword());
+		this.setUsername(user.getPassword());
 	}
+
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public boolean isAccountNonExpired() {
