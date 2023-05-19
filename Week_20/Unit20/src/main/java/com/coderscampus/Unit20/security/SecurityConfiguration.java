@@ -15,13 +15,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
 	private UserDetailsService userDetailsService;
+	
+//	public SecurityConfiguration(PasswordEncoder passwordEncoder) {
+//		this.passwordEncoder = passwordEncoder;
+//	}
 	
 	@Bean
 	public PasswordEncoder passwordEncoder () {
 		return new BCryptPasswordEncoder();
 	}
 
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //		// TODO Auto-generated method stub

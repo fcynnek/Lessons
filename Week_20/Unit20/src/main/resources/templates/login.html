@@ -23,26 +23,26 @@
             </div>
             <!-- the configured LogoutConfigurer#logoutSuccessUrl is /login?logout and contains the query param logout -->
             <div th:if="${param.logout != null}">
-                <div>
-                    You have been logged out.
-                </div>
 
-                <p>
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" />
-                </p>
-                <p>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" />
-                </p>
-                <!-- if using RememberMeConfigurer make sure remember-me matches RememberMeConfigurer#rememberMeParameter -->
-                <!-- <p>
-                        <label for="remember-me">Remember Me?</label>
-                        <input type="checkbox" id="remember-me" name="remember-me" />
-                    </p> -->
-                <div>
-                    <button type="submit" class="btn">Log in</button>
-                </div>
+                You have been logged out.
+            </div>
+
+            <p>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" />
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
+            </p>
+            <!-- if using RememberMeConfigurer make sure remember-me matches RememberMeConfigurer#rememberMeParameter -->
+            <!-- <p>
+                    <label for="remember-me">Remember Me?</label>
+                    <input type="checkbox" id="remember-me" name="remember-me" />
+                </p> -->
+            <div>
+                <button type="submit" class="btn">Log in</button>
+            </div>
         </fieldset>
     </form>
 </body>

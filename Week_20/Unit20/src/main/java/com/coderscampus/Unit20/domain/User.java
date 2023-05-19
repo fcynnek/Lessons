@@ -1,5 +1,6 @@
 package com.coderscampus.Unit20.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ public class User {
 	private String username;
 	private String password;
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-	private Set<Authorities> authorities;
+	private Set<Authorities> authorities = new HashSet<>();
 	
 	
 	public Set<Authorities> getAuthorities() {
