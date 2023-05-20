@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Login</title>
+        <script type="text/javascript">
+            alert("Hello world!")
+            // JS syntax is similar to Java but there is no need to type the ";" at the end
+        </script>
+    </head>
+    <body>
+        <h1>Login Below</h1>
+        <div>
+            Username: <input type="text" th:field="${user.username}">
+        </div>
+        <div>
+            Password: <input type="password" th:field="${user.password}">
+        </div>
+    </body>
+</html>
