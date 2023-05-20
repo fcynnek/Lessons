@@ -49,7 +49,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //		// TODO Auto-generated method stub
 //		super.configure(http);
 		
-		http.csrf().disable()
+		// https://docs.spring.io/spring-security/reference/features/exploits/csrf.html
+		http
+//			.csrf().disable()
 			.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN")
 			.anyRequest().hasAnyRole("USER").and()
 			.formLogin()
