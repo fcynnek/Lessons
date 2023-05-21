@@ -3,8 +3,39 @@
     <head>
         <title>Login</title>
         <script type="text/javascript">
+            var name = 'Kenny Cheng'
+            var age = 35
+
             alert("Hello world!")
             // JS syntax is similar to Java but there is no need to type the ";" at the end
+            // Also, the definition of variables is not the same in JS
+            // There are also different ways of concatenation
+            alert('Concat 1: Hello world! My name is ' + name + ' and I am ' + age + ' years old')
+            alert(`Concat 2: Hello world! 
+            My name is ${name} and I am ${age} years old`)
+
+            var car
+            console.log(`The value of "car" is: ${car}, data type is ${typeof car}`)
+            console.log(`The value of age is: ${age}, the type is ${typeof age}`)
+            console.log(`The value of 'name' is: ${name}, the type is: ${typeof name}`)
+            console.log(`What is 5+10 = ${5+10}`)
+
+            var addition = 5+15
+            console.log(`addition = ${addition}`)
+
+            var person = {
+                'firstName': 'Kenny',
+                'lastName': 'Cheng',
+                'age': 35,
+                'address': {
+                    'line1': '123 Fake St',
+                    'line2': 'Unit 5',
+                    'city': 'New York',
+                    'state': 'New York',
+                    'zipCode': 12345,
+                }
+            }
+            console.log(person)
         </script>
     </head>
     <body>
