@@ -10,9 +10,10 @@
             // JS syntax is similar to Java but there is no need to type the ";" at the end
             // Also, the definition of variables is not the same in JS
             // There are also different ways of concatenation
-            alert('Concat 1: Hello world! My name is ' + name + ' and I am ' + age + ' years old')
-            alert(`Concat 2: Hello world! 
-            My name is ${name} and I am ${age} years old`)
+
+            // alert('Concat 1: Hello world! My name is ' + name + ' and I am ' + age + ' years old')
+            // alert(`Concat 2: Hello world! 
+            // My name is ${name} and I am ${age} years old`)
 
             var car
             console.log(`The value of "car" is: ${car}, data type is ${typeof car}`)
@@ -36,6 +37,9 @@
                 }
             }
             console.log(person)
+
+            var submitBtn = document.querySelector("#submitBtn")
+            console.log('submitBtn is: ' + submitBtn)
         </script>
     </head>
     <body>
@@ -46,5 +50,22 @@
         <div>
             Password: <input type="password" th:field="${user.password}">
         </div>
+        <div>
+            <button type="button" id="submitBtn">Submit</button>
+        </div>
+        <script type="text/javascript">
+            var submitBtn = document.querySelector('#submitBtn')
+            console.log('submitBtn is: ' + submitBtn)
+
+            // function(){} = public void myMethod(){}
+            submitBtn.addEventListener('click', submitBtnClick)
+            function submitBtnClick () {
+                alert("Hey! I've been clicked")
+            }
+
+            submitBtn.addEventListener('mouseover', function () {
+                alert("Hey! I've been mouse overed")
+            })
+        </script>
     </body>
 </html>
