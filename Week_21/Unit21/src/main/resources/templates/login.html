@@ -66,6 +66,14 @@
             submitBtn.addEventListener('mouseover', function () {
                 alert("Hey! I've been mouse overed")
             })
+
+            var usernameTextbox = document.querySelector("#username")
+            usernameTextbox.addEventListener('focus', function () {
+                console.log("The username textbox now has focus")
+            })
+            // lambdas also exist in JS instead of -> it's =>
+            var passwordTextbox = document.querySelector("#password")
+            passwordTextbox.addEventListener('focus', () => console.log("Password focus"))
         </script>
     </body>
 </html>
