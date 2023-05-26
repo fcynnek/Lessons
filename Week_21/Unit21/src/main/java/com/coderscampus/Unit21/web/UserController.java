@@ -14,7 +14,8 @@ public class UserController {
 	 */
 	
 	@GetMapping("/exists")
-	public Boolean getExists (String username) {
+	public Boolean getExists (String username, String password) {
+		System.out.println("Username: " + username + "/n Password: " + password);
 		return true;
 	}
 	
