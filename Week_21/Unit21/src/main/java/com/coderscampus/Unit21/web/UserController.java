@@ -1,8 +1,12 @@
 package com.coderscampus.Unit21.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.coderscampus.Unit21.domain.User;
 
 @RestController
 @RequestMapping("/users")
@@ -16,6 +20,12 @@ public class UserController {
 	@GetMapping("/exists")
 	public Boolean getExists (String username, String password) {
 		System.out.println("Username: " + username + "/n Password: " + password);
+		return true;
+	}
+	
+	@PostMapping("/exists")
+	public Boolean postExists (@RequestBody User user) {
+		System.out.println("Username: " + user.getUsername() + "/n Password: " + user.getPassword());
 		return true;
 	}
 	
