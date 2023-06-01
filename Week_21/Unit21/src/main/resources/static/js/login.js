@@ -46,4 +46,4 @@ username.addEventListener('blur', () => {
 		.then((responseJson) => {
 			console.log(responseJson)
 		})
-})
+}) 

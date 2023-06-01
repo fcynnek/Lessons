@@ -40,7 +40,7 @@ public class UserController {
 	 */
 	@ResponseBody
 	public Boolean postExists (@RequestBody User user) {
-		System.out.println("Username: " + user.getUsername() + "/n Password: " + user.getPassword());
+		System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword());
 		user = userService.findByUsername(user.getUsername());
 		return user != null;
 	}
