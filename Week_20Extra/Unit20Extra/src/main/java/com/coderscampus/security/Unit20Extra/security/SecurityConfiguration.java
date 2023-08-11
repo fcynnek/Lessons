@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 
 import com.coderscampus.security.Unit20Extra.repository.UserRepository;
 import com.coderscampus.security.Unit20Extra.service.UserService;
@@ -52,6 +53,8 @@ public class SecurityConfiguration {
 //					.permitAll();
 					.requestMatchers("/api/v1/users").permitAll()
 					.requestMatchers("/products").authenticated();
+					// this is also an option which basically means "anything else"
+//					.AnyRequestMatcher().authenticated();
 		})
 //		.userDetailsService(userDetailsService()) // no longer needed here because it is being managed by the authentication provider
 		.authenticationProvider(authenticationProvider())
