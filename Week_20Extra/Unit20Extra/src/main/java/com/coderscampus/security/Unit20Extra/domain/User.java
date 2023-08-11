@@ -22,6 +22,8 @@ public class User implements UserDetails {
 	private String password;
 	
 	
+	public User() {} //adding a no argument constructor
+	
 	public User(String username, String password) {
 		super();
 		this.username = username;

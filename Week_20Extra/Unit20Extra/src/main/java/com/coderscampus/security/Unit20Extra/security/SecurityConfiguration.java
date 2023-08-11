@@ -1,5 +1,6 @@
 package com.coderscampus.security.Unit20Extra.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -12,12 +13,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.coderscampus.security.Unit20Extra.repository.UserRepository;
 import com.coderscampus.security.Unit20Extra.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+	@Autowired
+	private UserRepository userRepository;
+	
 	@Bean
 	public UserDetailsService userDetailsService () {
 		return new UserService();
@@ -40,11 +45,13 @@ public class SecurityConfiguration {
 	@Bean
  	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((request) -> {
-			request.requestMatchers("/products")
+			request
 //					.permitAll();
-					.hasAnyRole("USER")
-					.anyRequest()
-					.permitAll();
+//					.hasAnyRole("USER")
+//					.anyRequest()
+//					.permitAll();
+					.requestMatchers("/api/v1/users").permitAll()
+					.requestMatchers("/products").authenticated();
 		})
 //		.userDetailsService(userDetailsService()) // no longer needed here because it is being managed by the authentication provider
 		.authenticationProvider(authenticationProvider())
