@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -57,6 +58,7 @@ public class JwtService {
 			.setSubject(user.getUsername())
 			.setIssuedAt(new Date())
 			.setExpiration(new Date(System.currentTimeMillis() + expirationTimeInMilliseconds))
+			.setHeaderParam("typ", Header.JWT_TYPE)
 			.signWith(getSigningKey(), SignatureAlgorithm.HS256)
 			.compact();
 		return null;

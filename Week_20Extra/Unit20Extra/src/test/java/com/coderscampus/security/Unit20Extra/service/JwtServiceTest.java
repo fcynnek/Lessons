@@ -42,6 +42,7 @@ class JwtServiceTest {
 		
 		// Assert
 		System.out.println(jwt);
+		assertTrue(jwt.startsWith("ey"));
 	}
 
 }
