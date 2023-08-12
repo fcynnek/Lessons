@@ -1,7 +1,10 @@
 package com.coderscampus.security.Unit20Extra.service;
 
+import java.security.Key;
 import java.util.Date;
 import java.util.Map;
+
+import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JwtService {
@@ -29,6 +34,8 @@ public class JwtService {
 	 *  https://www.grc.com/passwords.htm
 	 */
 	
+	@Value("${jwt.expirationTimeInMilliseconds}")
+	// this is a constant time value that we will set on our application.properties file
 	private Long expirationTimeInMilliseconds;
 	
 	public String generateToken(Map<String, Object> extraClaims, UserDetails user) {
@@ -36,8 +43,15 @@ public class JwtService {
 			.setClaims(extraClaims)
 			.setSubject(user.getUsername())
 			.setIssuedAt(new Date())
-			.setExpiration(null)
-			.signWith(null, SignatureAlgorithm.HS256);
+			.setExpiration(new Date(System.currentTimeMillis() + expirationTimeInMilliseconds))
+			.signWith(getSigningKey(), SignatureAlgorithm.HS256)
+			.compact();
 		return null;
+	}
+
+	private Key getSigningKey() {
+		byte[] jwtSigningKeyAsBytes = Decoders.BASE64.decode(jwtSigningKey);
+		SecretKey secretKey = Keys.hmacShaKeyFor(jwtSigningKeyAsBytes);
+		return secretKey;
 	}
 }
