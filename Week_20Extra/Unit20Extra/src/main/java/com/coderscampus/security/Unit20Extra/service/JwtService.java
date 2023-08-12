@@ -38,6 +38,19 @@ public class JwtService {
 	// this is a constant time value that we will set on our application.properties file
 	private Long expirationTimeInMilliseconds;
 	
+	// we are creating setters in the main code because that way we can gun JUnit Tests w/o integrating Sprint Testing 
+	public void setJwtSigningKey(String jwtSigningKey) {
+		if (this.jwtSigningKey == null) {
+			this.jwtSigningKey = jwtSigningKey;			
+		}
+	}
+
+	public void setExpirationTimeInMilliseconds(Long expirationTimeInMilliseconds) {
+		if (this.expirationTimeInMilliseconds == null) {
+			this.expirationTimeInMilliseconds = expirationTimeInMilliseconds;			
+		}
+	}
+
 	public String generateToken(Map<String, Object> extraClaims, UserDetails user) {
 		Jwts.builder()
 			.setClaims(extraClaims)
