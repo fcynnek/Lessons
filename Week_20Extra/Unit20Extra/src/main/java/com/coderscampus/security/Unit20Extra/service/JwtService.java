@@ -79,4 +79,12 @@ public class JwtService {
 						.getBody();
 		return body;
 	}
+	
+	public String getSubject(String token) {
+		return null;
+	}
+	
+	public Boolean isTokenValid(String token, UserDetails user) {
+		return null;
+	}
 }
