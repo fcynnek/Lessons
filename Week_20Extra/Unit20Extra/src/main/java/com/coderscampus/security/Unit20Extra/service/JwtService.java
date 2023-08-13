@@ -3,6 +3,7 @@ package com.coderscampus.security.Unit20Extra.service;
 import java.security.Key;
 import java.util.Date;
 import java.util.Map;
+import java.util.function.Function;
 
 import javax.crypto.SecretKey;
 
@@ -54,15 +55,15 @@ public class JwtService {
 	}
 
 	public String generateToken(Map<String, Object> extraClaims, UserDetails user) {
-		Jwts.builder()
-			.setClaims(extraClaims)
-			.setSubject(user.getUsername())
-			.setIssuedAt(new Date())
-			.setExpiration(new Date(System.currentTimeMillis() + expirationTimeInMilliseconds))
-			.setHeaderParam("typ", Header.JWT_TYPE)
-			.signWith(getSigningKey(), SignatureAlgorithm.HS256)
-			.compact();
-		return null;
+		String jwt = Jwts.builder()
+						.setClaims(extraClaims)
+						.setSubject(user.getUsername())
+						.setIssuedAt(new Date())
+						.setExpiration(new Date(System.currentTimeMillis() + expirationTimeInMilliseconds))
+						.setHeaderParam("typ", Header.JWT_TYPE)
+						.signWith(getSigningKey(), SignatureAlgorithm.HS256)
+						.compact();
+		return jwt;
 	}
 
 	private Key getSigningKey() {
@@ -81,10 +82,19 @@ public class JwtService {
 	}
 	
 	public String getSubject(String token) {
-		return null;
+		String subject = extractClaim(token, Claims::getSubject);
+		return subject;
 	}
 	
-	public Boolean isTokenValid(String token, UserDetails user) {
-		return null;
+	public Boolean isValidToken(String token, UserDetails user) {
+		String subject = getSubject(token);
+		Date expirationDate = extractClaim(token, Claims::getExpiration);
+		return (user.getUsername().equalsIgnoreCase(subject) && new Date().before(expirationDate));
+	}
+	
+	private <T> T extractClaim(String token, Function<Claims, T> claimsExtract) {
+		// T = generic T type
+		Claims allClaims = extractAllClaims(token);
+		return claimsExtract.apply(allClaims);
 	}
 }

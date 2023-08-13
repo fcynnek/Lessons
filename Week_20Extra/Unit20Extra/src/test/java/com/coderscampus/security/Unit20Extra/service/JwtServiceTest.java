@@ -57,14 +57,65 @@ class JwtServiceTest {
 		// Arrange
 		Map<String, Object> extraClaims = new HashMap<>();
 		User user = new User("kenny@email.com", "abc123");
+		String token = sut.generateToken(extraClaims, user);
 		
 		// Act
-		String token = sut.generateToken(extraClaims, user);
 		Claims allClaims = sut.extractAllClaims(token);
 		
 		// Assert
 		System.out.println(allClaims);
-		assertEquals("kenny@email.com", allClaims.getSubject());
+		assertTrue(allClaims.size() >= 3);
 	}
 
+	@Test
+	@DisplayName("should extract valid subject from claims")
+	void testExtractSubjectClaim() {
+		// Arrange, Act, Assert
+		
+		// Arrange
+		Map<String, Object> extraClaims = new HashMap<>();
+		User user = new User("kenny@email.com", "abc123");
+		String token = sut.generateToken(extraClaims, user);
+		
+		// Act
+		String subject = sut.getSubject(token);
+		
+		// Assert
+		assertEquals("kenny@email.com", subject);
+	}
+	
+	@Test
+	@DisplayName("should return a valid token")
+	void testValidToken() {
+		// Arrange, Act, Assert
+		
+		// Arrange
+		Map<String, Object> extraClaims = new HashMap<>();
+		User user = new User("kenny@email.com", "abc123");
+		String token = sut.generateToken(extraClaims, user);
+		
+		// Act
+		Boolean isValidToken = sut.isValidToken(token, user);
+		
+		// Assert
+		assertTrue(isValidToken);
+	}
+	
+	@Test
+	@DisplayName("should return an invalid token")
+	void testInvalidToken() {
+		// Arrange, Act, Assert
+		
+		// Arrange
+		Map<String, Object> extraClaims = new HashMap<>();
+		User validUser = new User("kenny@email.com", "abc123");
+		User invalidUser = new User("trevor@email.com", "abc123");
+		String token = sut.generateToken(extraClaims, validUser);
+		
+		// Act
+		Boolean isValidToken = sut.isValidToken(token, invalidUser);
+		
+		// Assert
+		assertFalse(isValidToken);
+	}
 }
