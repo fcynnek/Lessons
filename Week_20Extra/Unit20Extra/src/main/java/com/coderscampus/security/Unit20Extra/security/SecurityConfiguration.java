@@ -26,9 +26,16 @@ public class SecurityConfiguration {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Autowired
+//	@Autowired
 	private JwtAuthenticationFilter jwtAuthenticationFilter;
 	
+	
+	public SecurityConfiguration(UserRepository userRepository, JwtAuthenticationFilter jwtAuthenticationFilter) {
+	super();
+	this.userRepository = userRepository;
+	this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+}
+
 	@Bean
 	public UserDetailsService userDetailsService () {
 		return new UserService();
