@@ -8,6 +8,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -57,7 +58,9 @@ public class SecurityConfiguration {
 	// this code was obtained by hovering over the annotation @EnableWebSecurity
 	@Bean
  	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests((request) -> {
+
+		http.csrf(AbstractHttpConfigurer::disable)
+			.authorizeHttpRequests((request) -> {
 			request
 //					.permitAll();
 //					.hasAnyRole("USER")
@@ -70,9 +73,11 @@ public class SecurityConfiguration {
 		})
 		.sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 //		.userDetailsService(userDetailsService()) // no longer needed here because it is being managed by the authentication provider
-		.authenticationProvider(authenticationProvider()).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+		.authenticationProvider(authenticationProvider())
+		.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 		// default login page:
-		.formLogin(Customizer.withDefaults());
+		// we are getting rid of the login page b/c we want to be able to hand off the auth using cookies stored in the session
+//		.formLogin(Customizer.withDefaults());
 		
 //		.formLogin((form) -> {
 //			form.loginPage("/login").permitAll();
