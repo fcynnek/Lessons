@@ -38,18 +38,18 @@ public class UserController {
 	public ResponseEntity<AuthenticationResponse> signUpUser (@RequestBody User user) {
 		
 //		User newUser = new User(user.getUsername(), passwordEncoder.encode(user.getPassword()));
-//		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		User savedUser =  userRepository.save(user);
-		String token = jwtService.generateToken(new HashMap<>(), savedUser);
+		String accessToken = jwtService.generateToken(new HashMap<>(), savedUser);
 		
-		return ResponseEntity.ok(new AuthenticationResponse(savedUser.getUsername(), token));
+		return ResponseEntity.ok(new AuthenticationResponse(savedUser.getUsername(), accessToken));
 	}
 	
 	@PostMapping("/login")
 	public ResponseEntity<AuthenticationResponse> signInUser(@RequestBody User user) {
 		UserDetails loggedInUser = userService.loadUserByUsername(user.getUsername());
-		String token = jwtService.generateToken(new HashMap<>(), loggedInUser);
+		String accessToken = jwtService.generateToken(new HashMap<>(), loggedInUser);
 		
-		return ResponseEntity.ok(new AuthenticationResponse(loggedInUser.getUsername(), token));
+		return ResponseEntity.ok(new AuthenticationResponse(loggedInUser.getUsername(), accessToken));
 	}
 }

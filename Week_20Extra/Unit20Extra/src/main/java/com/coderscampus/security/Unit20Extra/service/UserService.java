@@ -1,5 +1,7 @@
 package com.coderscampus.security.Unit20Extra.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -39,4 +41,7 @@ public class UserService implements UserDetailsService {
 		return user;
 	}
 
+	public Optional<User> findById(Integer userId) {
+		return userRepository.findById(userId);
+	}
 }

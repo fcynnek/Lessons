@@ -67,6 +67,7 @@ public class SecurityConfiguration {
 //					.anyRequest()
 //					.permitAll();
 					.requestMatchers("/api/v1/users").permitAll()
+					.requestMatchers("/api/v1/users/**").permitAll()
 					.requestMatchers("/products").authenticated();
 					// this is also an option which basically means "anything else"
 //					.AnyRequestMatcher().authenticated();
