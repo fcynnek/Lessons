@@ -71,11 +71,6 @@ public class User implements UserDetails {
 		return true;
 	}
 
-//	public String setPassword(String encode) {
-//		return encode;
-//		
-//		
-//	}
 	
 
 }

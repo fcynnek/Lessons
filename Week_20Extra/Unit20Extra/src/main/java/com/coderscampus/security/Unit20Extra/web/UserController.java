@@ -15,6 +15,7 @@ import com.coderscampus.security.Unit20Extra.domain.User;
 import com.coderscampus.security.Unit20Extra.repository.UserRepository;
 import com.coderscampus.security.Unit20Extra.response.AuthenticationResponse;
 import com.coderscampus.security.Unit20Extra.service.JwtService;
+import com.coderscampus.security.Unit20Extra.service.RefreshTokenService;
 import com.coderscampus.security.Unit20Extra.service.UserService;
 
 @RestController
@@ -32,6 +33,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private RefreshTokenService refreshTokenService;
 	
 //	@PostMapping("/users")
 	@PostMapping("")
