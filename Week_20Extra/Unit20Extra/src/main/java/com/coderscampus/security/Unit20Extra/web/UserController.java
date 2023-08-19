@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coderscampus.security.Unit20Extra.domain.RefreshToken;
 import com.coderscampus.security.Unit20Extra.domain.User;
 import com.coderscampus.security.Unit20Extra.repository.UserRepository;
 import com.coderscampus.security.Unit20Extra.response.AuthenticationResponse;
@@ -45,15 +46,24 @@ public class UserController {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		User savedUser =  userRepository.save(user);
 		String accessToken = jwtService.generateToken(new HashMap<>(), savedUser);
+		RefreshToken refreshToken = refreshTokenService.generateRefreshToken(savedUser.getId());
 		
-		return ResponseEntity.ok(new AuthenticationResponse(savedUser.getUsername(), accessToken));
+		return ResponseEntity.ok(new AuthenticationResponse(savedUser.getUsername(), accessToken, refreshToken.getRefreshToken()));
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<AuthenticationResponse> signInUser(@RequestBody User user) {
-		UserDetails loggedInUser = userService.loadUserByUsername(user.getUsername());
+	public ResponseEntity<AuthenticationResponse> signInUser (@RequestBody User user) {
+		User loggedInUser = (User) userService.loadUserByUsername(user.getUsername());
 		String accessToken = jwtService.generateToken(new HashMap<>(), loggedInUser);
+		RefreshToken refreshToken = refreshTokenService.generateRefreshToken(loggedInUser.getId());
 		
-		return ResponseEntity.ok(new AuthenticationResponse(loggedInUser.getUsername(), accessToken));
+		return ResponseEntity.ok(new AuthenticationResponse(loggedInUser.getUsername(), accessToken, refreshToken.getRefreshToken()));
+	}
+	
+	@PostMapping("/refreshtoken")
+	public ResponseEntity<?> getNewAccessToken (String refreshToken) {
+		refreshTokenService.createNewAccessToken(refreshToken);
+		
+		return ResponseEntity.ok(null);
 	}
 }

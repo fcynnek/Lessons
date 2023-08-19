@@ -15,13 +15,14 @@ public class  RefreshToken {
 	
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Long id;
+		private Integer id;
 		@OneToOne
 		@JoinColumn(name = "user_id", referencedColumnName = "id")
 		private User user;
 		private String RefreshToken;
 		private Date expirationDate;
 		
+		public RefreshToken () {}
 		
 		public RefreshToken(User user, String refreshToken, Date expirationDate) {
 			super();
@@ -31,10 +32,10 @@ public class  RefreshToken {
 		}
 		
 		
-		public Long getId() {
+		public Integer getId() {
 			return id;
 		}
-		public void setId(Long id) {
+		public void setId(Integer id) {
 			this.id = id;
 		}
 		public User getUser() {
