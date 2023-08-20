@@ -62,8 +62,8 @@ public class UserController {
 	
 	@PostMapping("/refreshtoken")
 	public ResponseEntity<?> getNewAccessToken (String refreshToken) {
-		refreshTokenService.createNewAccessToken(refreshToken);
+		String accessToken = refreshTokenService.createNewAccessToken(refreshToken);
 		
-		return ResponseEntity.ok(null);
+		return ResponseEntity.ok(accessToken);
 	}
 }

@@ -19,23 +19,26 @@ public class RefreshTokenService {
 	@Value("${jwt.refreshTokenExpirationTimeInMilliseconds}")
 	private Long refreshTokenExpirationTimeInMilliseconds;
 
-	@Autowired
+//	@Autowired
 	private UserService userService;
 	
-	@Autowired
+//	@Autowired
 	private RefreshTokenRepository refreshTokenRepository;
 
-
-//	public RefreshTokenService(UserService userService, RefreshTokenRepository refreshTokenRepository) {
-//		super();
-//		this.userService = userService;
-//		this.refreshTokenRepository = refreshTokenRepository;
-//	}
-
-	@Autowired
+//	@Autowired
 	private JwtService jwtService;
 
 	
+	
+	public RefreshTokenService(UserService userService, RefreshTokenRepository refreshTokenRepository,
+			JwtService jwtService) {
+		super();
+		this.userService = userService;
+		this.refreshTokenRepository = refreshTokenRepository;
+		this.jwtService = jwtService;
+	}
+
+
 	public RefreshToken generateRefreshToken(Integer userId) {
 		
 		Optional<User> userOpt = userService.findById(userId);
