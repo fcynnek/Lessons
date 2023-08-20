@@ -8,10 +8,12 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.coderscampus.security.Unit20Extra.domain.RefreshToken;
 import com.coderscampus.security.Unit20Extra.domain.User;
 import com.coderscampus.security.Unit20Extra.repository.RefreshTokenRepository;
+import com.coderscampus.security.Unit20Extra.request.RefreshTokenRequest;
 
 @Service
 public class RefreshTokenService {
@@ -72,7 +74,7 @@ public class RefreshTokenService {
 	}
 
 
-	public String createNewAccessToken (String refreshToken) {
+	public String createNewAccessToken (@RequestBody RefreshTokenRequest refreshToken) {
 		Optional<RefreshToken> refreshTokenOpt = refreshTokenRepository.findByRefreshToken(refreshToken);
 		
 		String accessToken = refreshTokenOpt.map(refreshTokenObj -> jwtService.generateToken(new HashMap<>(), refreshTokenObj.getUser()))
